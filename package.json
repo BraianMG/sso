@@ -1,8 +1,8 @@
 {
   "name": "sso",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "API for single sign-on across multiple apps",
+  "author": "Braian Gonzales",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
