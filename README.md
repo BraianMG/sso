@@ -60,6 +60,12 @@ API for single sign-on across multiple apps
   - Unit tests: `yarn test`
   - e2e tests: `yarn test:e2e`
   - Test coverage: `yarn test:cov`
+- Migrations:
+  - Create a new migration: `yarn migration:create src/core/database/migrations/{name}`
+  - Generate a migration from existing table schema: `yarn migration:generate src/core/database/migrations/{name}`
+  - Run all pending migrations: `yarn migration:run`
+  - Revert the most recent migration: `yarn migration:revert`
+  - Show migrations: `yarn migration:show`
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 

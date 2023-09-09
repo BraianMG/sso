@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    // TODO: Intentar cargar datos de conexión desde src\core\database\data-source.ts
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
