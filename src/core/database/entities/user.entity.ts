@@ -1,6 +1,6 @@
 import { BaseEntity } from './base.entity';
-import { RolesEnum } from '../../enums';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
+import { Role } from './role.entity';
 
 @Entity('user')
 export class User extends BaseEntity {
@@ -16,9 +16,7 @@ export class User extends BaseEntity {
   @Column({ default: true })
   isActive: boolean;
 
-  @Column({
-    type: 'simple-array',
-    default: [RolesEnum.User],
-  })
-  roles: RolesEnum[];
+  @ManyToMany(() => Role, { eager: true })
+  @JoinTable()
+  roles: Role[];
 }
