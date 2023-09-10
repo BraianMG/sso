@@ -7,6 +7,8 @@ interface SeedData {
   users: User[];
 }
 
+const SALT_OR_ROUNDS = Number(process.env.BCRYPT_SALTORROUNDS);
+
 const adminRole = { name: 'ADMIN' };
 const userRole = { name: 'USER' };
 
@@ -16,21 +18,21 @@ export const initialData: SeedData = {
     {
       email: 'admin1@example.com',
       fullName: 'Administrador 1',
-      password: bcrypt.hashSync('Admin1', 10),
+      password: bcrypt.hashSync('Admin1', SALT_OR_ROUNDS),
       isActive: true,
       roles: [adminRole],
     },
     {
       email: 'user1@example.com',
       fullName: 'Usuario 1',
-      password: bcrypt.hashSync('User1', 10),
+      password: bcrypt.hashSync('User1', SALT_OR_ROUNDS),
       isActive: true,
       roles: [userRole],
     },
     {
       email: 'user2@example.com',
-      fullName: 'Superuser 1',
-      password: bcrypt.hashSync('User2', 10),
+      fullName: 'Usuario 2',
+      password: bcrypt.hashSync('User2', SALT_OR_ROUNDS),
       isActive: true,
       roles: [userRole],
     },
