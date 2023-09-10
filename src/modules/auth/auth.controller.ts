@@ -1,6 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInDto, SignUpDto } from './dto';
+import { Auth, GetUser } from './decorators';
+import { User } from '@core/database/entities/user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -16,9 +18,9 @@ export class AuthController {
     return this.authService.signin(signInDto);
   }
 
-  // @Get('check-status')
-  // @Auth()
-  // checkStatus(@GetUser() user: User) {
-  //   return this.authService.checkStatus(user);
-  // }
+  @Get('check-status')
+  @Auth()
+  checkStatus(@GetUser() user: User) {
+    return this.authService.checkStatus(user);
+  }
 }
