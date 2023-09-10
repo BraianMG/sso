@@ -1,5 +1,6 @@
 import { Role } from '@core/database/entities/role.entity';
 import { User } from '@core/database/entities/user.entity';
+import { RolesEnum } from '@modules/auth/enums';
 import * as bcrypt from 'bcrypt';
 
 interface SeedData {
@@ -9,8 +10,8 @@ interface SeedData {
 
 const SALT_OR_ROUNDS = Number(process.env.BCRYPT_SALTORROUNDS);
 
-const adminRole = { name: 'ADMIN' };
-const userRole = { name: 'USER' };
+const adminRole = { name: RolesEnum.Admin };
+const userRole = { name: RolesEnum.User };
 
 export const initialData: SeedData = {
   roles: [adminRole, userRole],
@@ -38,37 +39,3 @@ export const initialData: SeedData = {
     },
   ],
 };
-
-// import * as bcrypt from 'bcrypt';
-
-// interface SeedData {
-//   roles: string[];
-//   users: UserData[];
-// }
-
-// interface UserData {
-//   email: string;
-//   fullName: string;
-//   password: string;
-// }
-
-// export const initialData: SeedData = {
-//   roles: ['ADMIN', 'USER'],
-//   users: [
-//     {
-//       email: 'admin1@example.com',
-//       fullName: 'Administrador 1',
-//       password: bcrypt.hashSync('Admin1', 10),
-//     },
-//     {
-//       email: 'user1@example.com',
-//       fullName: 'Usuario 1',
-//       password: bcrypt.hashSync('User1', 10),
-//     },
-//     {
-//       email: 'user2@example.com',
-//       fullName: 'Superuser 1',
-//       password: bcrypt.hashSync('User2', 10),
-//     },
-//   ],
-// };
