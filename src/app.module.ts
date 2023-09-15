@@ -14,6 +14,12 @@ import { SeedModule } from './modules/seed/seed.module';
     // TODO: Intentar cargar datos de conexión desde src\core\database\data-source.ts
     TypeOrmModule.forRoot({
       ssl: process.env.STAGE === 'production',
+      extra: {
+        ssl:
+          process.env.STAGE === 'production'
+            ? { rejectUnauthorized: false }
+            : null,
+      },
       type: 'postgres',
       host: process.env.DB_HOST,
       port: +process.env.DB_PORT,
