@@ -15,7 +15,7 @@ WORKDIR /usr/src/app
 RUN yarn build
 # Clear dependencies and reinstall for production (no devDependencies)
 RUN rm -rf node_modules
-RUN npm ci --only=production
+RUN yarn --production
 
 
 # Production stage
