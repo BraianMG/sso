@@ -1,4 +1,9 @@
+# ENV
 .env
+.env.*
+!.env.example
+
+# DB
 postgres-data
 
 # compiled output
