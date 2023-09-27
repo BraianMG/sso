@@ -20,6 +20,9 @@
         <li><a href="#for-development">For development</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#commands">Commands</a>
+    </li>
     <li><a href="#stay-in-touch">Stay in touch</a></li>
   </ol>
 </details>
@@ -52,7 +55,11 @@ API for single sign-on across multiple apps
 - Have Nest CLI installed: `npm i -g @nestjs/cli`
 - Install dependencies: `yarn install`
 - Build database: `docker-compose up -d`
-- Run the app: 
+- Run migrations: `yarn migration:run`
+- Run seed: `GET: http://localhost:4000/api/v1/seed`
+
+## Commands
+- Run app: 
   - Development: `yarn start`
   - Watch mode: `yarn start:dev`
   - Production mode: `yarn start:prod`

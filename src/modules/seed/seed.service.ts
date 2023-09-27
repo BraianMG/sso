@@ -37,9 +37,7 @@ export class SeedService {
 
     seedRoles.forEach((role) => roles.push(this.roleRepository.create(role)));
 
-    await this.roleRepository.save(roles);
-
-    return this.roleRepository.save(roles);
+    return await this.roleRepository.save(roles);
   }
 
   private async insertUsers(roles: Role[]): Promise<User[]> {
