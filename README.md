@@ -23,6 +23,9 @@
     <li>
       <a href="#commands">Commands</a>
     </li>
+    <li>
+      <a href="#debug-in-vs-code">Debug in VS Code</a>
+    </li>
     <li><a href="#stay-in-touch">Stay in touch</a></li>
   </ol>
 </details>
@@ -62,6 +65,7 @@ API for single sign-on across multiple apps
 - Run app: 
   - Development: `yarn start`
   - Watch mode: `yarn start:dev`
+  - Debug mode: `yarn start:debug`
   - Production mode: `yarn start:prod`
 - Run tests: 
   - Unit tests: `yarn test`
@@ -73,6 +77,30 @@ API for single sign-on across multiple apps
   - Run all pending migrations: `yarn migration:run`
   - Revert the most recent migration: `yarn migration:revert`
   - Show migrations: `yarn migration:show`
+
+<p align="right">(<a href="#top">Back to top</a>)</p>
+
+## Debug in VS Code
+Run application with `yarn start:debug` and attach debugger as indicated in the image below
+![Attach debugger](/docs/attach-debugger.png)
+
+It is important to have the `.vscode/launch.json` file configured as follows
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        }
+    ]
+}
+```
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
