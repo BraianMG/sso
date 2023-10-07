@@ -82,7 +82,7 @@ API for single sign-on across multiple apps
 
 ## Debug in VS Code
 Run application with `yarn start:debug` and attach debugger as indicated in the image below
-![Attach debugger](/docs/attach-debugger.png)
+![Attach debugger](/docs/images/attach-debugger.png)
 
 It is important to have the `.vscode/launch.json` file configured as follows
 ```json
@@ -101,6 +101,9 @@ It is important to have the `.vscode/launch.json` file configured as follows
     ]
 }
 ```
+If everything went well, we can see that the color of the VS Code status bar changed to orange and in the console we will see a message that the debugger was attached.
+
+![Result of attach debugger](/docs/images/result-of-attach-debugger.png)
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
