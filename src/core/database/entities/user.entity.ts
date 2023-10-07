@@ -16,6 +16,9 @@ export class User extends BaseEntity {
   @Column({ default: true })
   isActive: boolean;
 
+  @Column({ type: 'uuid', nullable: true })
+  resetPasswordToken?: string;
+
   @ManyToMany(() => Role)
   @JoinTable()
   roles: Role[];

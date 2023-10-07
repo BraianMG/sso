@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto';
 import { User } from '@core/database/entities/user.entity';
 import { FindOneOptions, Repository } from 'typeorm';
@@ -27,6 +27,10 @@ export class UsersService extends BaseService<User> {
   }
 
   async findOneWithOptions(options: FindOneOptions<User>): Promise<User> {
-    return this.repository.findOne(options);
+    const user = await this.repository.findOne(options);
+
+    if (!user) throw new NotFoundException('User not found');
+
+    return user;
   }
 }
