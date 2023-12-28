@@ -1,14 +1,23 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { SignInDto, SignUpDto } from './dto';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { ResetPasswordDto, SignInDto, SignUpDto } from './dto';
 import { UsersService } from '@modules/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces';
 import { User } from '@core/database/entities/user.entity';
+import { v4 as uuid } from 'uuid';
+import { FindOneOptions } from 'typeorm';
 
 @Injectable()
 export class AuthService {
+  saltOrRounds = Number(this.configService.get<number>('BCRYPT_SALTORROUNDS'));
+
   constructor(
     private readonly usersService: UsersService,
     private readonly configService: ConfigService,
@@ -17,13 +26,10 @@ export class AuthService {
 
   async signup(signUpDto: SignUpDto) {
     const { password, ...userData } = signUpDto;
-    const saltOrRounds = Number(
-      this.configService.get<number>('BCRYPT_SALTORROUNDS'),
-    );
 
     const user = await this.usersService.create({
       ...userData,
-      password: bcrypt.hashSync(password, saltOrRounds),
+      password: bcrypt.hashSync(password, this.saltOrRounds),
     });
     delete user.password;
     user.roles = user.roles.map((role) => ({
@@ -36,7 +42,7 @@ export class AuthService {
   async signin(signInDto: SignInDto) {
     const { email, password } = signInDto;
 
-    const user = await this.usersService.findOneWithOptions({
+    const user = await this.getUserAndCheckStatus({
       where: { email },
       relations: ['roles'],
       select: {
@@ -70,9 +76,58 @@ export class AuthService {
     return { access_token };
   }
 
+  async requestResetPassword(email: string): Promise<string> {
+    const user = await this.getUserAndCheckStatus({ where: { email } });
+
+    const resetPasswordToken = uuid();
+
+    user.resetPasswordToken = resetPasswordToken;
+
+    try {
+      await this.usersService.update(user.id, user);
+    } catch (error) {
+      throw new InternalServerErrorException();
+    }
+
+    return resetPasswordToken;
+  }
+
+  async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<string> {
+    const { email, password, resetPasswordToken } = resetPasswordDto;
+    const user = await this.getUserAndCheckStatus({ where: { email } });
+
+    if (
+      user.resetPasswordToken &&
+      user.resetPasswordToken !== resetPasswordToken
+    ) {
+      throw new BadRequestException('Invalid Token');
+    }
+
+    try {
+      user.password = bcrypt.hashSync(password, this.saltOrRounds);
+      user.resetPasswordToken = null;
+      await this.usersService.update(user.id, user);
+    } catch (error) {
+      throw new InternalServerErrorException();
+    }
+
+    return 'Success';
+  }
+
   async checkStatus(user: User) {
     const { id, email, fullName, roles } = user;
     return { user: { id, email, fullName, roles } };
+  }
+
+  private async getUserAndCheckStatus(
+    options: FindOneOptions<User>,
+  ): Promise<User> {
+    const user = await this.usersService.findOneWithOptions(options);
+
+    if (!user.isActive)
+      throw new UnauthorizedException('User is inactive, talk with an admin');
+
+    return user;
   }
 
   private getJwtToken(payload: JwtPayload): string {

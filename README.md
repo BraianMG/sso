@@ -20,6 +20,12 @@
         <li><a href="#for-development">For development</a></li>
       </ul>
     </li>
+    <li>
+      <a href="#commands">Commands</a>
+    </li>
+    <li>
+      <a href="#debug-in-vs-code">Debug in VS Code</a>
+    </li>
     <li><a href="#stay-in-touch">Stay in touch</a></li>
   </ol>
 </details>
@@ -52,9 +58,14 @@ API for single sign-on across multiple apps
 - Have Nest CLI installed: `npm i -g @nestjs/cli`
 - Install dependencies: `yarn install`
 - Build database: `docker-compose up -d`
-- Run the app: 
+- Run migrations: `yarn migration:run`
+- Run seed: `GET: http://localhost:4000/api/v1/seed`
+
+## Commands
+- Run app: 
   - Development: `yarn start`
   - Watch mode: `yarn start:dev`
+  - Debug mode: `yarn start:debug`
   - Production mode: `yarn start:prod`
 - Run tests: 
   - Unit tests: `yarn test`
@@ -66,6 +77,33 @@ API for single sign-on across multiple apps
   - Run all pending migrations: `yarn migration:run`
   - Revert the most recent migration: `yarn migration:revert`
   - Show migrations: `yarn migration:show`
+
+<p align="right">(<a href="#top">Back to top</a>)</p>
+
+## Debug in VS Code
+Run application with `yarn start:debug` and attach debugger as indicated in the image below
+![Attach debugger](/docs/images/attach-debugger.png)
+
+It is important to have the `.vscode/launch.json` file configured as follows
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach",
+            "port": 9229,
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        }
+    ]
+}
+```
+If everything went well, we can see that the color of the VS Code status bar changed to orange and in the console we will see a message that the debugger was attached.
+
+![Result of attach debugger](/docs/images/result-of-attach-debugger.png)
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
