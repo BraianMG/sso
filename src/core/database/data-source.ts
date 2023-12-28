@@ -1,5 +1,7 @@
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { ENVIRONMENT } from '../../shared/enum';
+import { isEnvironmentMatch } from '../../shared/functions';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +12,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD || 'Abc.123456',
   synchronize: false,
   keepConnectionAlive: true,
-  logging: process.env.STAGE === 'development',
+  logging: isEnvironmentMatch(ENVIRONMENT.Development),
   entities: [__dirname + '/entities/**/*.entity{.ts,.js}'],
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 } as DataSourceOptions);

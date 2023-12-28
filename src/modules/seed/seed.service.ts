@@ -2,9 +2,10 @@ import { Role } from '@core/database/entities/role.entity';
 import { User } from '@core/database/entities/user.entity';
 import { Injectable, MethodNotAllowedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { isDevelopmentEnvironment } from '@shared/functions';
+import { isEnvironmentMatch } from '@shared/functions';
 import { Repository } from 'typeorm';
 import { initialData } from './data/seed-data';
+import { ENVIRONMENT } from '@shared/enum';
 
 @Injectable()
 export class SeedService {
@@ -16,7 +17,7 @@ export class SeedService {
   ) {}
 
   async runSeed() {
-    if (!isDevelopmentEnvironment()) {
+    if (!isEnvironmentMatch(ENVIRONMENT.Development)) {
       throw new MethodNotAllowedException();
     }
 

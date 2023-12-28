@@ -7,18 +7,19 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { SeedModule } from './modules/seed/seed.module';
+import { isEnvironmentMatch } from '@shared/functions';
+import { ENVIRONMENT } from '@shared/enum';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     // TODO: Intentar cargar datos de conexión desde src\core\database\data-source.ts
     TypeOrmModule.forRoot({
-      ssl: process.env.STAGE === 'production',
+      ssl: isEnvironmentMatch(ENVIRONMENT.Production),
       extra: {
-        ssl:
-          process.env.STAGE === 'production'
-            ? { rejectUnauthorized: false }
-            : null,
+        ssl: isEnvironmentMatch(ENVIRONMENT.Production)
+          ? { rejectUnauthorized: false }
+          : null,
       },
       type: 'postgres',
       host: process.env.DB_HOST,
