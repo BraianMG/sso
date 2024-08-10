@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto';
 import { User } from '@core/database/entities/user.entity';
 import { FindOneOptions, Repository } from 'typeorm';
@@ -30,6 +34,32 @@ export class UsersService extends BaseService<User> {
     const user = await this.repository.findOne(options);
 
     if (!user) throw new NotFoundException('User not found');
+
+    return user;
+  }
+
+  async validateUserById(id: string): Promise<User> {
+    const user = await this.findOneWithOptions({
+      where: { id: id },
+      relations: ['roles'],
+      select: {
+        id: true,
+        email: true,
+        password: true,
+        fullName: true,
+        isActive: true,
+        roles: {
+          id: false,
+          createdAt: false,
+          updatedAt: false,
+          deletedAt: false,
+          name: true,
+        },
+      },
+    });
+
+    if (!user.isActive)
+      throw new UnauthorizedException('User is inactive, talk with an admin');
 
     return user;
   }

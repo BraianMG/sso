@@ -1,8 +1,15 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ResetPasswordDto, SignInDto, SignUpDto } from './dto';
+import {
+  RefreshTokenDto,
+  ResetPasswordDto,
+  SignInDto,
+  SignUpDto,
+  TokensResponseDto,
+} from './dto';
 import { Auth, GetUser } from './decorators';
 import { User } from '@core/database/entities/user.entity';
+import { RefreshJwtGuard } from './guards/refresh-jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -14,8 +21,17 @@ export class AuthController {
   }
 
   @Post('signin')
-  signin(@Body() signInDto: SignInDto) {
+  signin(@Body() signInDto: SignInDto): Promise<TokensResponseDto> {
     return this.authService.signin(signInDto);
+  }
+
+  @Post('refresh')
+  @UseGuards(RefreshJwtGuard)
+  refresh(
+    @Body() refreshTokenDto: RefreshTokenDto,
+    @GetUser() user: User,
+  ): Promise<TokensResponseDto> {
+    return this.authService.refresh(user, refreshTokenDto);
   }
 
   @Post('request-reset-password')

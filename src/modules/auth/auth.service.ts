@@ -4,7 +4,13 @@ import {
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { ResetPasswordDto, SignInDto, SignUpDto } from './dto';
+import {
+  RefreshTokenDto,
+  ResetPasswordDto,
+  SignInDto,
+  SignUpDto,
+  TokensResponseDto,
+} from './dto';
 import { UsersService } from '@modules/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
@@ -39,7 +45,7 @@ export class AuthService {
     return user;
   }
 
-  async signin(signInDto: SignInDto) {
+  async signin(signInDto: SignInDto): Promise<TokensResponseDto> {
     const { email, password } = signInDto;
 
     const user = await this.getUserAndCheckStatus({
@@ -68,12 +74,34 @@ export class AuthService {
     delete user.password;
     delete user.isActive;
 
-    const access_token = this.getJwtToken({
+    const accessToken = this.getJwtAccessToken({
       sub: user.id,
       useremail: user.email,
     });
 
-    return { access_token };
+    const refreshToken = this.getJwtRefreshToken({
+      sub: user.id,
+      useremail: user.email,
+    });
+
+    return { accessToken, refreshToken };
+  }
+
+  async refresh(
+    user: User,
+    refreshTokenDto: RefreshTokenDto,
+  ): Promise<TokensResponseDto> {
+    const { refreshToken } = refreshTokenDto;
+
+    if (!user.isActive)
+      throw new UnauthorizedException('User is inactive, talk with an admin');
+
+    const accessToken = this.getJwtAccessToken({
+      sub: user.id,
+      useremail: user.email,
+    });
+
+    return { accessToken, refreshToken };
   }
 
   async requestResetPassword(email: string): Promise<string> {
@@ -130,8 +158,15 @@ export class AuthService {
     return user;
   }
 
-  private getJwtToken(payload: JwtPayload): string {
-    const access_token = this.jwtService.sign(payload);
-    return access_token;
+  private getJwtAccessToken(payload: JwtPayload): string {
+    const accessToken = this.jwtService.sign(payload);
+    return accessToken;
+  }
+
+  private getJwtRefreshToken(payload: JwtPayload): string {
+    const refreshToken = this.jwtService.sign(payload, {
+      expiresIn: this.configService.get<string>('JWT_REFRESH_TOKEN_EXPIRES_IN'),
+    });
+    return refreshToken;
   }
 }
