@@ -62,8 +62,9 @@ export class AuthService {
       },
     });
 
-    if (!bcrypt.compareSync(password, user.password))
+    if (!bcrypt.compareSync(password, user.password)) {
       throw new UnauthorizedException('Invalid credentials');
+    }
 
     delete user.password;
     delete user.isActive;

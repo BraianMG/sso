@@ -33,7 +33,9 @@ export class UsersService extends BaseService<User> {
   async findOneWithOptions(options: FindOneOptions<User>): Promise<User> {
     const user = await this.repository.findOne(options);
 
-    if (!user) throw new NotFoundException('User not found');
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
 
     return user;
   }
@@ -41,8 +43,9 @@ export class UsersService extends BaseService<User> {
   async getUserAndValidateStatus(options: FindOneOptions<User>): Promise<User> {
     const user = await this.findOneWithOptions(options);
 
-    if (!user.isActive)
+    if (!user.isActive) {
       throw new UnauthorizedException('User is inactive, talk with an admin');
+    }
 
     return user;
   }
