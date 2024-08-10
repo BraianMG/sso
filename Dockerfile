@@ -1,5 +1,5 @@
 # Development stage
-FROM node:18-alpine as development
+FROM node:20-alpine as development
 WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
@@ -19,7 +19,7 @@ RUN yarn --production
 
 
 # Production stage
-FROM node:18-alpine as production
+FROM node:20-alpine as production
 RUN apk --no-cache add nodejs ca-certificates
 WORKDIR /root/
 COPY --from=builder /usr/src/app ./

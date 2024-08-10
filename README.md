@@ -42,7 +42,7 @@ API for single sign-on across multiple apps
 
 ### __Used technologies__
 
-- [Node.js v18.16.0](https://nodejs.org/es/)
+- [Node.js v20.16.0](https://nodejs.org/es/)
 - [NestJs](https://nestjs.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [TypeORM](https://typeorm.io/)
