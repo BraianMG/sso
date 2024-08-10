@@ -1,3 +1,3 @@
-export * from './get-user.decorator';
-export * from './role-protected.decorator';
+export * from './getUser.decorator';
+export * from './roleProtected.decorator';
 export * from './auth.decorator';

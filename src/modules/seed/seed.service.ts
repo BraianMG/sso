@@ -4,7 +4,7 @@ import { Injectable, MethodNotAllowedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { isEnvironmentMatch } from '@shared/functions';
 import { Repository } from 'typeorm';
-import { initialData } from './data/seed-data';
+import { initialData } from './data/seedData';
 import { ENVIRONMENT } from '@shared/enum';
 
 @Injectable()

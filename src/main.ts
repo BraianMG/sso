@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const logger = new Logger('Bootstrap');
 
-  app.enableCors(); // TODO: Manage whitelist
+  app.enableCors(); // TODO: Create class or function to manage whitelist
 
   app.setGlobalPrefix('api/v1');
 

@@ -9,7 +9,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ICrudService } from './crud-service.interface';
+import { ICrudService } from './crudService.interface';
 import IPagination from './pagination.interface';
 import ISearch from './search.interface';
 import { BaseEntity } from '@core/database/entities/base.entity';

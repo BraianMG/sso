@@ -13,7 +13,7 @@ import { ENVIRONMENT } from '@shared/enum';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    // TODO: Intentar cargar datos de conexión desde src\core\database\data-source.ts
+    // TODO: Try to load connection data from src\core\database\dataSource.ts
     TypeOrmModule.forRoot({
       ssl: isEnvironmentMatch(ENVIRONMENT.Production),
       extra: {

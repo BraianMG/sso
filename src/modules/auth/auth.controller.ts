@@ -9,7 +9,7 @@ import {
 } from './dto';
 import { Auth, GetUser } from './decorators';
 import { User } from '@core/database/entities/user.entity';
-import { RefreshJwtGuard } from './guards/refresh-jwt-auth.guard';
+import { RefreshJwtGuard } from './guards/refreshJwtAuth.guard';
 
 @Controller('auth')
 export class AuthController {
