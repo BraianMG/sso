@@ -25,7 +25,24 @@ export class RefreshJwtStrategy extends PassportStrategy(
   async validate(payload: JwtPayload): Promise<User> {
     const { sub } = payload;
 
-    const user = await this.usersService.validateUserById(sub);
+    const user = await this.usersService.getUserAndValidateStatus({
+      where: { id: sub },
+      relations: ['roles'],
+      select: {
+        id: true,
+        email: true,
+        password: true,
+        fullName: true,
+        isActive: true,
+        roles: {
+          id: false,
+          createdAt: false,
+          updatedAt: false,
+          deletedAt: false,
+          name: true,
+        },
+      },
+    });
 
     return user;
   }

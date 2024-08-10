@@ -38,25 +38,9 @@ export class UsersService extends BaseService<User> {
     return user;
   }
 
-  async validateUserById(id: string): Promise<User> {
-    const user = await this.findOneWithOptions({
-      where: { id: id },
-      relations: ['roles'],
-      select: {
-        id: true,
-        email: true,
-        password: true,
-        fullName: true,
-        isActive: true,
-        roles: {
-          id: false,
-          createdAt: false,
-          updatedAt: false,
-          deletedAt: false,
-          name: true,
-        },
-      },
-    });
+  // TODO: CASI IGUAL [A]
+  async getUserAndValidateStatus(options: FindOneOptions<User>): Promise<User> {
+    const user = await this.findOneWithOptions(options);
 
     if (!user.isActive)
       throw new UnauthorizedException('User is inactive, talk with an admin');

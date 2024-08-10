@@ -18,7 +18,6 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces';
 import { User } from '@core/database/entities/user.entity';
 import { v4 as uuid } from 'uuid';
-import { FindOneOptions } from 'typeorm';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +47,7 @@ export class AuthService {
   async signin(signInDto: SignInDto): Promise<TokensResponseDto> {
     const { email, password } = signInDto;
 
-    const user = await this.getUserAndCheckStatus({
+    const user = await this.usersService.getUserAndValidateStatus({
       where: { email },
       relations: ['roles'],
       select: {
@@ -62,11 +61,6 @@ export class AuthService {
         },
       },
     });
-
-    if (!user) throw new UnauthorizedException('Invalid credentials');
-
-    if (!user.isActive)
-      throw new UnauthorizedException('User is inactive, talk with an admin');
 
     if (!bcrypt.compareSync(password, user.password))
       throw new UnauthorizedException('Invalid credentials');
@@ -105,7 +99,9 @@ export class AuthService {
   }
 
   async requestResetPassword(email: string): Promise<string> {
-    const user = await this.getUserAndCheckStatus({ where: { email } });
+    const user = await this.usersService.getUserAndValidateStatus({
+      where: { email },
+    });
 
     const resetPasswordToken = uuid();
 
@@ -122,7 +118,9 @@ export class AuthService {
 
   async resetPassword(resetPasswordDto: ResetPasswordDto): Promise<string> {
     const { email, password, resetPasswordToken } = resetPasswordDto;
-    const user = await this.getUserAndCheckStatus({ where: { email } });
+    const user = await this.usersService.getUserAndValidateStatus({
+      where: { email },
+    });
 
     if (
       user.resetPasswordToken &&
@@ -145,17 +143,6 @@ export class AuthService {
   async checkStatus(user: User) {
     const { id, email, fullName, roles } = user;
     return { user: { id, email, fullName, roles } };
-  }
-
-  private async getUserAndCheckStatus(
-    options: FindOneOptions<User>,
-  ): Promise<User> {
-    const user = await this.usersService.findOneWithOptions(options);
-
-    if (!user.isActive)
-      throw new UnauthorizedException('User is inactive, talk with an admin');
-
-    return user;
   }
 
   private getJwtAccessToken(payload: JwtPayload): string {
