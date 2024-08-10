@@ -38,7 +38,6 @@ export class UsersService extends BaseService<User> {
     return user;
   }
 
-  // TODO: CASI IGUAL [A]
   async getUserAndValidateStatus(options: FindOneOptions<User>): Promise<User> {
     const user = await this.findOneWithOptions(options);
 

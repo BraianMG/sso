@@ -5,11 +5,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import {
-  RefreshTokenDto,
   ResetPasswordDto,
   SignInDto,
   SignUpDto,
-  TokensResponseDto,
+  SignInResponseDto,
+  RefreshTokenReponseDto,
 } from './dto';
 import { UsersService } from '@modules/users/users.service';
 import * as bcrypt from 'bcrypt';
@@ -44,7 +44,7 @@ export class AuthService {
     return user;
   }
 
-  async signin(signInDto: SignInDto): Promise<TokensResponseDto> {
+  async signin(signInDto: SignInDto): Promise<SignInResponseDto> {
     const { email, password } = signInDto;
 
     const user = await this.usersService.getUserAndValidateStatus({
@@ -81,21 +81,13 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
-  async refresh(
-    user: User,
-    refreshTokenDto: RefreshTokenDto,
-  ): Promise<TokensResponseDto> {
-    const { refreshToken } = refreshTokenDto;
-
-    if (!user.isActive)
-      throw new UnauthorizedException('User is inactive, talk with an admin');
-
+  async refreshToken(user: User): Promise<RefreshTokenReponseDto> {
     const accessToken = this.getJwtAccessToken({
       sub: user.id,
       useremail: user.email,
     });
 
-    return { accessToken, refreshToken };
+    return { accessToken };
   }
 
   async requestResetPassword(email: string): Promise<string> {
