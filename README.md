@@ -36,7 +36,9 @@
 
 ### __Description__
 
-API for single sign-on across multiple apps
+API for single sign-on across multiple apps.
+
+API Definition for Postman: [SSO_API.postman_collection.json](/docs/SSO_API.postman_collection.json)
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 

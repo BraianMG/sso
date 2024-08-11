@@ -6,7 +6,9 @@ Pending tasks:
 - [X] Normalize file names to camelcase
 - [X] Upgrade to node 20
 - [X] Update dependencies to their latest versions
-- [ ] Add postman collection
+- [X] Add postman collection
+- [ ] Create protected example routes based on user roles
+- [ ] Reset password via email
 - [ ] Create unit and e2e tests
 - [ ] Create class or function to manage whitelist for cors
 - [ ] Try to load connection data from src\core\database\dataSource.ts in app.module.tsi

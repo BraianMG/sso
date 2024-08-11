@@ -1,0 +1,880 @@
+{
+	"info": {
+		"_postman_id": "716d747f-7aef-4d4a-b0aa-c0523680de28",
+		"name": "SSO API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9274239"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Your Name\",\r\n    \"email\": \"your.email@example.com\",\r\n    \"password\": \"your-password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/signup",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullName\": \"Your Name\",\r\n    \"email\": \"your.email@example.com\",\r\n    \"password\": \"your-password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/signup",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78-skEj4U6kJ6gjMDY7dyOKb9s81Jk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:43:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"The password must have a Uppercase, lowercase letter and a number\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						}
+					]
+				},
+				{
+					"name": "Sign In",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin1@example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/signin",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Admin 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin1@example\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/signin",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "500"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f4-W2BGVqdkf3NKmKMXAlf3t/bgusM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:44:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZDRkYWNiNi01ZGJlLTRlNGYtYTA2ZS1iZWZmOTY0NzMzMDciLCJ1c2VyZW1haWwiOiJhZG1pbjFAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjMzODAyNDgsImV4cCI6MTcyMzM4MDI3OH0.03oWQe6UQOd9_0YWSkOUrmObqwrkB8LEWCeOXGAPwnE\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZDRkYWNiNi01ZGJlLTRlNGYtYTA2ZS1iZWZmOTY0NzMzMDciLCJ1c2VyZW1haWwiOiJhZG1pbjFAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjMzODAyNDgsImV4cCI6MTcyMzk4NTA0OH0.XaR83ISPVIFcWtr_y6YK0o0_BklOMou0giG8RUDtMT8\"\n}"
+						},
+						{
+							"name": "User 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@example.com\",\r\n    \"password\": \"User1@example\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/signin",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f2-JkrbskBpepJUHKb7QN3Yg1huJYE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:44:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYmRkNWE0MC1hMTFhLTRhNmYtOTI4Yy1jZTgwZjdjNTEzOGMiLCJ1c2VyZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDI3OCwiZXhwIjoxNzIzMzgwMzA4fQ.lGJOWaK7jtHM4zfLlbCjtG1eG2kKWsYW3hOjbHE-B0I\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYmRkNWE0MC1hMTFhLTRhNmYtOTI4Yy1jZTgwZjdjNTEzOGMiLCJ1c2VyZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDI3OCwiZXhwIjoxNzIzOTg1MDc4fQ.BZn1VoPpWcfN6ElozkyoIHDXD43epQSrvVhTB5mNlKI\"\n}"
+						},
+						{
+							"name": "User 2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user2@example.com\",\r\n    \"password\": \"User2@example\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/signin",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f2-b7jydUB6MqIpURInRAsVO+Rd1ug\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:45:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDMwMCwiZXhwIjoxNzIzMzgwMzMwfQ.9Uw_C1BzuJo-bnOAD-mo6mTk-YN7PrAEJssQkI3K0D0\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDMwMCwiZXhwIjoxNzIzOTg1MTAwfQ.2QeDVyWxMymnoMnPczyzqSPlSmGDnBzb2WX1Dxir8I8\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZDRkYWNiNi01ZGJlLTRlNGYtYTA2ZS1iZWZmOTY0NzMzMDciLCJ1c2VyZW1haWwiOiJhZG1pbjFAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjMzODA1MjEsImV4cCI6MTcyMzk4NTMyMX0.wtUp29a6wFI8Jr9s2iwTitDr2aCQrFtMnCcNRcTJskY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/check-status",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"check-status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer your_access_token",
+										"description": "Put a valid token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/check-status",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"check-status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "139"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b-tWVvqoTldS9bbSe2zqzi2U7LfI8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:49:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": \"0d4dacb6-5dbe-4e4f-a06e-beff96473307\",\n        \"email\": \"admin1@example.com\",\n        \"fullName\": \"Administrador 1\",\n        \"roles\": [\n            {\n                \"name\": \"ADMIN\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDMwMCwiZXhwIjoxNzIzOTg1MTAwfQ.2QeDVyWxMymnoMnPczyzqSPlSmGDnBzb2WX1Dxir8I8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"your_refresh_token\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "249"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f9-yqNJLDb+ET5O5Ne8UHUq/c6Cogo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:54:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDg1NiwiZXhwIjoxNzIzMzgwODg2fQ.WBNIctw3M0GCnpnHNflx8Htu_G2MEmn1GQF4A83_4oU\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"2916a4b7-2669-4b91-8e9a-59b6da61bb63\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password Admin 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"your_token\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7-Qqj2Udef0AXurAYS32RCuYOgEYQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:56:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Success"
+						}
+					]
+				},
+				{
+					"name": "Request Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"request-reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Request Reset Password Admin 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"request-reset-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-MN7x/9TKRwyormsfwBy37+8DfAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:55:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "2916a4b7-2669-4b91-8e9a-59b6da61bb63"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "others",
+			"item": [
+				{
+					"name": "API PROD",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://ep-throbbing-bird-00576105.eu-central-1.aws.neon.tech:4000/api/v1/",
+							"protocol": "https",
+							"host": [
+								"ep-throbbing-bird-00576105",
+								"eu-central-1",
+								"aws",
+								"neon",
+								"tech"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "protected-routes",
+			"item": []
+		},
+		{
+			"name": "seed",
+			"item": [
+				{
+					"name": "Seed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/seed",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"seed"
+							]
+						},
+						"description": "Launching this request will create the following:\n\n### User Roles\n\n``` typescript\nenum RolesEnum {\n  Admin = 'ADMIN',\n  User = 'USER',\n}\n\n ```\n\n### Users\n\n``` typescript\nconst users: [\n  {\n    email: 'admin1@example.com',\n    fullName: 'Administrador 1',\n    password: 'Admin1@example',\n    isActive: true,\n    roles: ['ADMIN'],\n  },\n  {\n    email: 'user1@example.com',\n    fullName: 'Usuario 1',\n    password: 'User1@example',\n    isActive: true,\n    roles: ['USER'],\n  },\n  {\n    email: 'user2@example.com',\n    fullName: 'Usuario 2',\n    password: 'User2@example',\n    isActive: true,\n    roles: ['USER'],\n  },\n]\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Seed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/seed",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"seed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-LMcc414FDUcc95R/Y/1J8oqcBOk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 13:01:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "SEED EXECUTED"
+						}
+					]
+				}
+			]
+		}
+	]
+}
