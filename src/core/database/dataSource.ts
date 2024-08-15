@@ -1,15 +1,20 @@
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ENVIRONMENT } from '../../shared/enum';
 import { isEnvironmentMatch } from '../../shared/functions';
 
+ConfigModule.forRoot();
+
+const configService = new ConfigService();
+
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT, 10) || 5432,
-  database: process.env.DB_DATABASE || 'sso',
-  username: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'Abc.123456',
+  host: configService.get<string>('DB_HOST'),
+  port: configService.get<number>('DB_PORT'),
+  database: configService.get<string>('DB_NAME'),
+  username: configService.get<string>('DB_USERNAME'),
+  password: configService.get<string>('DB_PASSWORD'),
   synchronize: false,
   keepConnectionAlive: true,
   logging: isEnvironmentMatch(ENVIRONMENT.Development),
