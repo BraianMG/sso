@@ -62,6 +62,39 @@ API Definition for Postman: [SSO_API.postman_collection.json](/docs/SSO_API.post
 - Build database: `docker-compose up -d`
 - Run migrations: `yarn migration:run`
 - Run seed: `GET: http://localhost:4000/api/v1/seed`
+  - When launching this request all roles, users and relationships between them will be deleted, then the following will be created:
+    ```typescript
+    // Roles
+    const roles = [
+      { name: 'ADMIN' },
+      { name: 'USER' },
+    ];
+
+    // Users
+    const users: [
+      {
+        email: 'admin1@example.com',
+        fullName: 'Administrador 1',
+        password: 'Admin1@example',
+        isActive: true,
+        roles: ['ADMIN'],
+      },
+      {
+        email: 'user1@example.com',
+        fullName: 'Usuario 1',
+        password: 'User1@example',
+        isActive: true,
+        roles: ['USER'],
+      },
+      {
+        email: 'user2@example.com',
+        fullName: 'Usuario 2',
+        password: 'User2@example',
+        isActive: true,
+        roles: ['USER'],
+      },
+    ];
+    ```
 
 ## Commands
 - Run app: 
