@@ -7,8 +7,9 @@ Pending tasks:
 - [X] Upgrade to node 20
 - [X] Update dependencies to their latest versions
 - [X] Add postman collection
-- [ ] Create protected example routes based on user roles
+- [X] Create unit tests
+- [X] Create protected example routes based on user roles
 - [ ] Reset password via email
-- [ ] Create unit and e2e tests
+- [ ] Create e2e tests
 - [ ] Create class or function to manage whitelist for cors
-- [ ] Try to load connection data from src\core\database\dataSource.ts in app.module.tsi
+- [ ] Try to load connection data from src\core\database\dataSource.ts in app.module.ts

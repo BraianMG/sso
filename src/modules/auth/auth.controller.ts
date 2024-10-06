@@ -10,6 +10,7 @@ import {
 import { Auth, GetUser } from './decorators';
 import { User } from '@core/database/entities/user.entity';
 import { RefreshJwtGuard } from './guards/refreshJwtAuth.guard';
+import { RolesEnum } from './enums';
 
 @Controller('auth')
 export class AuthController {
@@ -46,4 +47,23 @@ export class AuthController {
   checkStatus(@GetUser() user: User) {
     return this.authService.checkStatus(user);
   }
+
+  //#region Test routes
+  @Get('admins-only')
+  @Auth(RolesEnum.Admin)
+  async adminsOnly(): Promise<string> {
+    return 'Hello admin!'
+  }
+
+  @Get('users-only')
+  @Auth(RolesEnum.User)
+  async usersOnly(): Promise<string> {
+    return 'Hello user!'
+  }
+
+  @Get('public')
+  async public(): Promise<string> {
+    return 'Hello anonymous user!'
+  }
+  //#endregion
 }
