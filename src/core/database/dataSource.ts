@@ -10,11 +10,11 @@ const configService = new ConfigService();
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: configService.get<string>('DB_HOST'),
-  port: configService.get<number>('DB_PORT'),
-  database: configService.get<string>('DB_NAME'),
-  username: configService.get<string>('DB_USERNAME'),
-  password: configService.get<string>('DB_PASSWORD'),
+  host: configService.get<string>('DB_HOST') || 'localhost',
+  port: configService.get<number>('DB_PORT') || 5432,
+  database: configService.get<string>('DB_NAME') || 'sso',
+  username: configService.get<string>('DB_USERNAME') || 'postgres',
+  password: configService.get<string>('DB_PASSWORD') || 'YourPassword',
   synchronize: false,
   keepConnectionAlive: true,
   logging: isEnvironmentMatch(ENVIRONMENT.Development),
