@@ -52,18 +52,18 @@ export class AuthController {
   @Get('admins-only')
   @Auth(RolesEnum.Admin)
   async adminsOnly(): Promise<string> {
-    return 'Hello admin!'
+    return 'Hello admin!';
   }
 
   @Get('users-only')
   @Auth(RolesEnum.User)
   async usersOnly(): Promise<string> {
-    return 'Hello user!'
+    return 'Hello user!';
   }
 
   @Get('public')
   async public(): Promise<string> {
-    return 'Hello anonymous user!'
+    return 'Hello anonymous user!';
   }
   //#endregion
 }
