@@ -44,7 +44,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"fullName\": \"Your Name\",\r\n    \"email\": \"your.email@example.com\",\r\n    \"password\": \"your-password\"\r\n}",
+									"raw": "{\r\n    \"fullName\": \"Your Name\",\r\n    \"email\": \"your.email@example.com\",\r\n    \"password\": \"Your-passw0rd\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -350,6 +350,297 @@
 					]
 				},
 				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDMwMCwiZXhwIjoxNzIzOTg1MTAwfQ.2QeDVyWxMymnoMnPczyzqSPlSmGDnBzb2WX1Dxir8I8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"your_refresh_token\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "249"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f9-yqNJLDb+ET5O5Ne8UHUq/c6Cogo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:54:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDg1NiwiZXhwIjoxNzIzMzgwODg2fQ.WBNIctw3M0GCnpnHNflx8Htu_G2MEmn1GQF4A83_4oU\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Request Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"request-reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Request Reset Password Admin 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"request-reset-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-MN7x/9TKRwyormsfwBy37+8DfAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:55:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "2916a4b7-2669-4b91-8e9a-59b6da61bb63"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"2916a4b7-2669-4b91-8e9a-59b6da61bb63\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password Admin 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"your_token\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7-Qqj2Udef0AXurAYS32RCuYOgEYQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Aug 2024 12:56:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Success"
+						}
+					]
+				},
+				{
 					"name": "Check Status",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -467,13 +758,26 @@
 					]
 				},
 				{
-					"name": "Refresh Token",
+					"name": "Route for admins only",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ZGVjOTYyNi0xMjI3LTQ5ZGMtYjk5Yi1jYjYxMjg4YzUxZDUiLCJ1c2VyZW1haWwiOiJhZG1pbjFAZXhhbXBsZS5jb20iLCJpYXQiOjE3MjgyMjMxNTUsImV4cCI6MTcyODIyMzE4NX0.JBu20nw3uw5OrEAVYhju7ZoDdtXHWQDfE5Ca2zPrVXE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDMwMCwiZXhwIjoxNzIzOTg1MTAwfQ.2QeDVyWxMymnoMnPczyzqSPlSmGDnBzb2WX1Dxir8I8\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -481,7 +785,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+							"raw": "{{BASE_URL}}/api/v1/auth/admins-only",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -489,19 +793,19 @@
 								"api",
 								"v1",
 								"auth",
-								"refresh-token"
+								"admins-only"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Refresh Token",
+							"name": "Route for admins only",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"refreshToken\": \"your_refresh_token\"\r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -509,7 +813,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{BASE_URL}}/api/v1/auth/refresh-token",
+									"raw": "{{BASE_URL}}/api/v1/auth/admins-only",
 									"host": [
 										"{{BASE_URL}}"
 									],
@@ -517,109 +821,12 @@
 										"api",
 										"v1",
 										"auth",
-										"refresh-token"
+										"admins-only"
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "249"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"f9-yqNJLDb+ET5O5Ne8UHUq/c6Cogo\""
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 11 Aug 2024 12:54:16 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDYwMzIxNi1iZWRmLTRjYmItYmI5MC1lYTUyNzg1ZDM4NDgiLCJ1c2VyZW1haWwiOiJ1c2VyMkBleGFtcGxlLmNvbSIsImlhdCI6MTcyMzM4MDg1NiwiZXhwIjoxNzIzMzgwODg2fQ.WBNIctw3M0GCnpnHNflx8Htu_G2MEmn1GQF4A83_4oU\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Reset Password",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"2916a4b7-2669-4b91-8e9a-59b6da61bb63\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"auth",
-								"reset-password"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Reset Password Admin 1",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"admin1@example.com\",\r\n    \"password\": \"Admin11@example\",\r\n    \"resetPasswordToken\": \"your_token\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/api/v1/auth/reset-password",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"auth",
-										"reset-password"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "html",
 							"header": [
 								{
@@ -636,15 +843,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "7"
+									"value": "12"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"7-Qqj2Udef0AXurAYS32RCuYOgEYQ\""
+									"value": "W/\"c-TDPGgIJMApHXGAKRF2xEDnunsyk\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 11 Aug 2024 12:56:50 GMT"
+									"value": "Sun, 06 Oct 2024 13:59:29 GMT"
 								},
 								{
 									"key": "Connection",
@@ -656,18 +863,31 @@
 								}
 							],
 							"cookie": [],
-							"body": "Success"
+							"body": "Hello admin!"
 						}
 					]
 				},
 				{
-					"name": "Request Reset Password",
+					"name": "Route for users only",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjY2FiNmQ2YS1lZDQyLTQwN2MtOGUzNy03YmE5NzEzM2EyOTkiLCJ1c2VyZW1haWwiOiJ1c2VyMUBleGFtcGxlLmNvbSIsImlhdCI6MTcyODIyMzUzNSwiZXhwIjoxNzI4MjIzNTY1fQ.nFA5mWdMk6X1M6M6g99vakP8sqdRf300KU48vg4CJhM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -675,7 +895,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+							"raw": "{{BASE_URL}}/api/v1/auth/users-only",
 							"host": [
 								"{{BASE_URL}}"
 							],
@@ -683,19 +903,19 @@
 								"api",
 								"v1",
 								"auth",
-								"request-reset-password"
+								"users-only"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Request Reset Password Admin 1",
+							"name": "Route for users only",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"admin1@example.com\"\r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -703,7 +923,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{BASE_URL}}/api/v1/auth/request-reset-password",
+									"raw": "{{BASE_URL}}/api/v1/auth/users-only",
 									"host": [
 										"{{BASE_URL}}"
 									],
@@ -711,12 +931,12 @@
 										"api",
 										"v1",
 										"auth",
-										"request-reset-password"
+										"users-only"
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "html",
 							"header": [
 								{
@@ -733,15 +953,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "36"
+									"value": "11"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"24-MN7x/9TKRwyormsfwBy37+8DfAg\""
+									"value": "W/\"b-wptZq0XhkSTCic82CNamQy7BD5o\""
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 11 Aug 2024 12:55:21 GMT"
+									"value": "Sun, 06 Oct 2024 14:05:42 GMT"
 								},
 								{
 									"key": "Connection",
@@ -753,7 +973,117 @@
 								}
 							],
 							"cookie": [],
-							"body": "2916a4b7-2669-4b91-8e9a-59b6da61bb63"
+							"body": "Hello user!"
+						}
+					]
+				},
+				{
+					"name": "Public route",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/auth/public",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"public"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Public route",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/auth/public",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"public"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-yd1mjut6S6ktnibDiE1N/MzcEo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Oct 2024 14:06:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Hello anonymous user!"
 						}
 					]
 				}
@@ -790,10 +1120,6 @@
 			]
 		},
 		{
-			"name": "protected-routes",
-			"item": []
-		},
-		{
 			"name": "seed",
 			"item": [
 				{
@@ -811,8 +1137,7 @@
 								"v1",
 								"seed"
 							]
-						},
-						"description": "Launching this request will create the following:\n\n### User Roles\n\n``` typescript\nenum RolesEnum {\n  Admin = 'ADMIN',\n  User = 'USER',\n}\n\n ```\n\n### Users\n\n``` typescript\nconst users: [\n  {\n    email: 'admin1@example.com',\n    fullName: 'Administrador 1',\n    password: 'Admin1@example',\n    isActive: true,\n    roles: ['ADMIN'],\n  },\n  {\n    email: 'user1@example.com',\n    fullName: 'Usuario 1',\n    password: 'User1@example',\n    isActive: true,\n    roles: ['USER'],\n  },\n  {\n    email: 'user2@example.com',\n    fullName: 'Usuario 2',\n    password: 'User2@example',\n    isActive: true,\n    roles: ['USER'],\n  },\n]\n\n ```"
+						}
 					},
 					"response": [
 						{
