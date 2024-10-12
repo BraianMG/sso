@@ -9,6 +9,7 @@ import { RolesModule } from './modules/roles/roles.module';
 import { SeedModule } from './modules/seed/seed.module';
 import { isEnvironmentMatch } from '@shared/functions';
 import { ENVIRONMENT } from '@shared/enum';
+import { NotificationsModule } from './modules/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ENVIRONMENT } from '@shared/enum';
     UsersModule,
     RolesModule,
     SeedModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

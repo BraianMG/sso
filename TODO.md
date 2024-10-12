@@ -8,8 +8,8 @@ Pending tasks:
 - [X] Update dependencies to their latest versions
 - [X] Add postman collection
 - [X] Create unit tests
+- [X] Create e2e tests
 - [X] Create protected example routes based on user roles
-- [ ] Reset password via email
-- [ ] Create e2e tests
+- [X] Reset password via email
 - [ ] Create class or function to manage whitelist for cors
 - [ ] Try to load connection data from src\core\database\dataSource.ts in app.module.ts
