@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import {
@@ -18,15 +19,18 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces';
 import { User } from '@core/database/entities/user.entity';
 import { v4 as uuid } from 'uuid';
+import { NotificationsService } from '../notifications/notifications.service';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
   saltOrRounds = Number(this.configService.get<number>('BCRYPT_SALTORROUNDS'));
 
   constructor(
     private readonly usersService: UsersService,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   async signup(signUpDto: SignUpDto) {
@@ -100,9 +104,19 @@ export class AuthService {
 
     user.resetPasswordToken = resetPasswordToken;
 
+    const subject = 'Reestablecer contraseña';
+    const message = `Hola ${user.fullName}.<br>Utiliza el siguiente código para reestablecer tu contraseña: ${resetPasswordToken}`;
+
     try {
       await this.usersService.update(user.id, user);
+      await this.notificationsService.sendEmail(
+        email,
+        subject,
+        message,
+        message,
+      );
     } catch (error) {
+      this.logger.error(error);
       throw new InternalServerErrorException();
     }
 

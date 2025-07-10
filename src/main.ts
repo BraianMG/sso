@@ -5,7 +5,9 @@ import { ConfigService } from '@nestjs/config';
 import { setAppConfig } from './setAppConfig';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['verbose', 'debug', 'log', 'warn', 'error', 'fatal'],
+  });
 
   const logger = new Logger('Bootstrap');
 

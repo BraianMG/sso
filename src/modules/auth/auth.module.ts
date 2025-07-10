@@ -7,6 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { RefreshJwtStrategy } from './strategies/refreshJwt.strategy';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 @Module({
   controllers: [AuthController],
@@ -29,6 +30,7 @@ import { RefreshJwtStrategy } from './strategies/refreshJwt.strategy';
       },
     }),
     UsersModule,
+    NotificationsModule,
   ],
   exports: [JwtStrategy, PassportModule, JwtModule, RefreshJwtStrategy],
 })

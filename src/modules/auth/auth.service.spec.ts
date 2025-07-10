@@ -7,6 +7,7 @@ import { RolesEnum } from './enums';
 import { User } from '@core/database/entities/user.entity';
 import { ResetPasswordDto, SignInDto, SignUpDto } from './dto';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
+import { NotificationsService } from '../notifications/notifications.service';
 
 const encriptedPassword = '_.encripted__password._';
 const mockedToken = 'mocked_token';
@@ -29,6 +30,7 @@ describe('AuthService', () => {
   let authService: AuthService;
   let usersService: UsersService;
   let jwtService: JwtService;
+  let notificationsService: NotificationsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -54,12 +56,20 @@ describe('AuthService', () => {
             get: jest.fn().mockReturnValue('mocked_value'),
           },
         },
+        {
+          provide: NotificationsService,
+          useValue: {
+            sendEmail: jest.fn(),
+          },
+        },
       ],
     }).compile();
 
     authService = module.get<AuthService>(AuthService);
     usersService = module.get<UsersService>(UsersService);
     jwtService = module.get<JwtService>(JwtService);
+    notificationsService =
+      module.get<NotificationsService>(NotificationsService);
   });
 
   it('authService should be defined', () => {
@@ -72,6 +82,10 @@ describe('AuthService', () => {
 
   it('jwtService should be defined', () => {
     expect(jwtService).toBeDefined();
+  });
+
+  it('notificationsService should be defined', () => {
+    expect(notificationsService).toBeDefined();
   });
 
   describe('sign up', () => {
@@ -291,15 +305,15 @@ describe('AuthService', () => {
     });
   });
 
-  describe.skip('check status', () => {
+  describe('check status', () => {
     it('should not be necessary', () => {});
   });
 
-  describe.skip('get jwt access token', () => {
+  describe('get jwt access token', () => {
     it('should not be necessary', () => {});
   });
 
-  describe.skip('get jwt refresh token', () => {
+  describe('get jwt refresh token', () => {
     it('should not be necessary', () => {});
   });
 });
